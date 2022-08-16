@@ -8,12 +8,12 @@ export class ContactForm extends Component {
         number: '',
       };
     
-      handleInputChange = (e) => {
+      inputChange = (e) => {
         const { value, name } = e.target;
         this.setState({ [name]: value });
       };
     
-      handleFormSubmit = (e) => {
+      formSubmit = (e) => {
         e.preventDefault();
         const { name } = this.state;
         const nameToLowerCase = name.toLowerCase();
@@ -24,12 +24,12 @@ export class ContactForm extends Component {
     render() {
         const {name, number} = this.state;
         return(
-            <form onSubmit={this.handleFormSubmit} className={css.contact__form}>
+            <form onSubmit={this.formSubmit} className={css.contact__form}>
             <input
               type="text"
               name="name"
               value={name}
-              onChange={this.handleInputChange}
+              onChange={this.inputChange}
               placeholder="Name"
               className={css.contact__input}
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -41,7 +41,7 @@ export class ContactForm extends Component {
               name="number"
               value={number}
               placeholder="Number"
-              onChange={this.handleInputChange}
+              onChange={this.inputChange}
               className={css.contact__input}
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
